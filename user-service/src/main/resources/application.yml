@@ -1,0 +1,40 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+    # druid
+    filters: statQ
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatement: true
+    maxOpenPreparedStatements: 20
+  jpa:
+    generate-ddl: false
+    show-sql: false
+
+eureka:
+  client:
+    # 默认为true
+    # fetch-registry: true
+    # register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+
+swagger:
+  enabled: true
